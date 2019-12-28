@@ -36,7 +36,7 @@ Follow the process described in the course to `eb init` a new application and `e
 
 ```
 Deployment screenshot is available at: ./deployment-screenshot/Screenshot-ebeanstalk-deployment.png 
-End point: http://image-filter-dev-dev.ap-south-1.elasticbeanstalk.com/filteredimage?image_url=https://placekitten.com/g/200/300
+End point: [http://image-filter-dev-dev.ap-south-1.elasticbeanstalk.com/filteredimage?image_url=https://placekitten.com/g/200/300]
 ```
 
 ## Stand Out (Optional)
