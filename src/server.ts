@@ -39,10 +39,29 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
           .send(`please provide image url`);
     }
   //    2. call filterImageFromURL(image_url) to filter the image
+    const filteredImage = await filterImageFromURL(image_url);
+    /*
+      @TODO how to apply error hanlding in a case where the input image_url is invalid 
+      and filterImageFromURL could not apply the transformations???
+        .catch(err => {
+          res.status(500).send(`failed to apply filtering on the image`);
+          return null;
+        });
+    */
   //    3. send the resulting file in the response
-  //    4. deletes any files on the server on finish of the response
-
-    res.sendFile(image_url);
+    res.sendFile(filteredImage, (error) => {
+      if(error){
+        res.status(500)
+          .send(`failed to send file ${error}`);
+      } else {
+        console.log(`File sent successfully`);
+        //    4. deletes any files on the server on finish of the response
+        let files: Array<string> = [filteredImage];
+        deleteLocalFiles( files);
+        console.log(`File ${filteredImage} deleted`);
+      }
+    });
+  
   } );
 
   //! END @TODO1
